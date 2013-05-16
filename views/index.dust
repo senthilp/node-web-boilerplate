@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="layout" content="main" />
-	<title>eBay</title>
+	<title>Senthil P</title>
 </head>
 <body>
 	<div class="page">
-		<h3>Say hello to {name}!</h3>	
+		<h1>This is Senthil's blog</h1>	
 	</div>
 	
 </body></html>
