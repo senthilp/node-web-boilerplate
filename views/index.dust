@@ -3,11 +3,172 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="layout" content="main" />
-	<title>Senthil P</title>
+	<title>Senthil Padmanabhan - senthilp.com</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 'Open Sans',sans-serif;
+			color: #333;
+		}
+		a {
+			text-decoration: none;
+		}
+		.fl {
+			float: left;
+		}
+		.fr {
+			float: right;
+		}
+		.clr {
+			display: block;
+			clear: both;
+		}
+		.clr:after {
+			display: block;
+			visibility: hidden;
+			clear: both;
+			overflow: hidden;
+			height: 0;
+			content: "\0020";
+		}
+		.white {
+			color: #fff;
+		}
+		.bg-amber {
+			background-color: #282828;
+		}
+		.center {
+			max-width: 768px;
+			margin: 0 auto;
+			padding: 0 5px;
+		}
+		.hero .info {
+			padding: 60px 15px 40px;
+			background: url(/images/senthil3.jpg) no-repeat 100% 0;
+		}
+		.hero ul {
+			color: #bfbfbf;
+			list-style-type: circle;
+			padding: 0;
+		}
+		.hero ul li {
+			padding-bottom: 5px;
+		}
+		.hero .social a {
+			padding-right: 5px;
+		}
+		[class*=" icon"], [class^="icon"] {
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			background-image: url("/images/social.png");
+		  	background-repeat: no-repeat;
+		}
+		.icon-in {
+			background-position: -185px -10px;
+		}
+		.icon-tw {
+			background-position: -127px -10px;
+		}
+		.icon-gh {
+			background-position: -242px -10px;
+		}
+		.icon-fb {
+			background-position: -13px -10px;
+		}
+		.main ul.posts {
+			list-style-type: none;
+			padding: 0;
+		}
+		ul.posts li {
+			border-bottom: 1px solid #efefef;
+			padding: 10px 0 5px;
+		}
+		ul.posts li:last-child {
+			border-bottom: none;
+		}
+		.time {
+			color: #999;
+			font-size: 0.9em;
+		}
+		.posts .title {
+			width: 70%;
+		}
+	</style>
+	<meta name="author" content="Senthil Padmanabhan"/>
+	<meta name="twitter:card" content="summary">
+	<meta name="description" content="Senthil Padmanabhan is a principal engineer and frontend technologist at eBay."/>
+	<meta name="twitter:description" content="All things Frontend • Food • Movies • Principal Engineer • eBay">
+	<meta property="og:image" content="http://www.senthilp.com/images/senthil.jpg"/>
+	<meta name="twitter:image:src" content="http://www.senthilp.com/images/senthil.jpg">
+	<meta name="twitter:creator" content="@senthil_hi">
+	<meta name="twitter:url" content="http://www.senthilp.com/">
+	<meta name="twitter:title" content="Senthil Padmanabhan">
+	<meta property="twitter:account_id" content="88984815" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel=canonical href="http://www.senthilp.com/"/>
 </head>
 <body>
-	<div class="page">
-		<h1>This is Senthil's blog</h1>	
+	<div>
+		<div class="hero bg-amber white">
+			<div class="center">
+				<div class="info">
+					<h2 itemprop="name">Senthil Padmanabhan</h2>
+					<ul>
+						<li>Frontend Technologist</li>
+						<li>Food</li>
+						<li>Movies</li>
+						<li>Principal Engineer at <span itemprop="affiliation">eBay</span></li>
+					</ul>
+					<div class="social">
+						<a rel="me" href="https://twitter.com/senthil_hi" title="Twitter"><i class="icon-tw"></i></a>
+						<a rel="me" href="http://www.linkedin.com/in/senthilpadmanabhan/" title="LinkedIn"><i class="icon-in"></i></a>
+						<a rel="me" href="https://github.com/senthilp" title="GitHub"><i class="icon-gh"></i></a>
+						<a rel="me" href="https://www.facebook.com/senthil.padmanabhan" title="Facebook"><i class="icon-fb"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main">
+			<div class="center">
+				<h3>Thought Timeline</h3>
+				<ul class="posts">
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2014/03/05/yet-another-responsive-vs-adaptive-story/">Yet Another Responsive vs. Adaptive Story</a></span>
+						<span class="time fr">Mar 5, 2014</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://www.meetup.com/The-Great-WebDev-Debates/events/136998692/">The Great WebDev Debates - Responsive vs. Adpative</a> | <a href="http://www.youtube.com/playlist?list=PLtI_Kze3cHz5ftzIxz2-0hS8ShF6uU2Ny">Videos</a></span>
+						<span class="time fr">Oct 10, 2013</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2013/05/17/how-we-built-ebays-first-node-js-application/">How We Built eBay’s First Node.js Application</a></span>
+						<span class="time fr">May 17, 2013</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://calendar.perfplanet.com/2012/spofcheck-fighting-frontend-spof-at-its-root/">SPOFCheck – Fighting Frontend SPOF at its root</a></span>
+						<span class="time fr">Dec 27, 2012</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2012/04/16/five-javascript-tips-for-a-sleek-user-experience/">Five JavaScript Tips for a Sleek User Experience</a></span>
+						<span class="time fr">Apr 16, 2012</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2011/10/14/the-new-ebay-motors-homepage-is-2x-faster/">The New eBay Motors Homepage is 2X Faster</a></span>
+						<span class="time fr">Oct 14, 2011</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2011/07/12/data-uri-sprites/">Data URI Sprites</a></span>
+						<span class="time fr">Jul 12, 2011</span>
+					</li>
+					<li class="clr">
+						<span class="title fl"><a href="http://developer.yahoo.com/blogs/ydn/yui-3-asyncqueue-cache-warmer-better-yahoo-mail-31211.html">YUI 3 AsyncQueue + Cache Warmer = better Yahoo! Mail performance</a></span>
+						<span class="time fr">Jan 21, 2011</span>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	
-</body></html>
+</body>
+</html>
