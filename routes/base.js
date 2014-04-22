@@ -12,4 +12,8 @@ module.exports = function(app) {
 		expressUtil.send(req, res, 'index', { 'name':'Node' });
 		
 	});
+	/**
+	* Playground
+	*/
+	app.get('/play', require('../controller/play.js'));
 };
