@@ -24,7 +24,7 @@
 		}		
 
 		/* slider root element */
-		.slider {
+		.smartslider {
 		    background-color: #E63C65;
 		    height: 9px;
 		    position: relative;
@@ -37,16 +37,8 @@
 		    box-shadow:inset 0 0 8px #000;
 		}
 
-		/* progress bar (enabled with progress: true) */
-		.progress {
-		    height:9px;
-		    background-color:#C5FF00;
-		    display:none;
-		    opacity:0.6;
-		}
-
 		/* drag handle */
-		.handle {
+		.smartslider a {
 		    background-color: #fff;
 		    height: 28px;
 		    width: 28px;
@@ -56,39 +48,26 @@
 		    margin-top: 1px;
 		    border: 1px solid #000;
 		    cursor: pointer;
-		    box-shadow:0 0 6px #000;
-		    border-radius:14px;		    
-		}
-
-		/* the input field */
-		.range {
-		    border:1px inset #ddd;
-		    float:left;
-		    font-size:20px;
-		    margin:0 0 0 15px;
-		    padding:3px 0;
-		    text-align:center;
-		    width:50px;
-		    -moz-border-radius:5px;
-		    -webkit-border-radius:5px;
+		    box-shadow: 0 0 6px #000;
+		    border-radius: 50%;		    
 		}	
 	</style>
 </head>
 <body>
 	<div class="slider-container clr">
-		<input type="range" name="range2" min="0" max="20" value="0" />	
+		<div class="smartslider" data-min="0" data-max="20" data-value="0" data-step="0" data-init="true">
+			<a href="#"></a>
+		</div>
 	</div>
 	<br/>
 	<div id="react"></div>
 	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="/js/rangeslider/jquery.rangeslider.js"></script>
+	<script src="/js/rangeslider/jquery.smartslider.js"></script>
 	<script src="/js/react/react.js"></script>
 	<script src="/js/react/react-with-addons.js"></script>
 	<script src="/js/react/JSXTransformer.js"></script>
 
 	<script>
-		/* Slider functionality */
-		$(":range").rangeinput();
 	</script>
 	<script>
 		/* global React */
