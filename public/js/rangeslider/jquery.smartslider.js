@@ -30,7 +30,7 @@
 			
 		Events: dragStart, drag, dragEnd. 
 	*/
-	var doc, draggable;
+	var $doc, draggable;
 	
 	$.fn.draglight = function(conf) {
 		
@@ -39,7 +39,7 @@
 		
 		conf = $.extend({x: true, y: true, drag: true}, conf);
 	
-		doc = doc || $(document).on("mousedown mouseup", function(e) {
+		$doc = $doc || $(document).on("mousedown mouseup", function(e) {
 				
 			var el = $(e.target);
 			
@@ -51,7 +51,7 @@
 					y0 = e.pageY - offset.top,
 					start = true;
 				
-				doc.on("mousemove.drag", function(e) {
+				$doc.on("mousemove.drag", function(e) {
 					var x = e.pageX -x0,
 						y = e.pageY -y0,
 						props = {};
@@ -77,7 +77,7 @@
 						draggable.trigger("dragEnd");
 					}
 				} finally {
-					doc.off("mousemove.drag");
+					$doc.off("mousemove.drag");
 					draggable = null;
 				}
 			}
@@ -109,6 +109,7 @@
 		// private variables
 		var self = this,
 			$handle = $elem.find("a"),
+			$progress = $elem.find("smartlider-progress"),
 			vertical,
 			value,			// current value
 			prevValue,      // previous value
@@ -312,7 +313,7 @@
 
 		if (conf.keyboard) {
 			
-			doc.on('keydown', function(e) {
+			$doc.on('keydown', function(e) {
 					
 				var key = e.keyCode,
 					up = $([75, 76, 38, 33, 39]).index(key) !== -1,

@@ -19,30 +19,63 @@
 			content: "\0020";
 		}
 		.slider-container {
-			margin: 200px auto 100px;
+			margin: 20px auto 100px;
 			width: 500px;			
 		}		
 
+		.imglistwrap {
+			visibility: hidden;
+			overflow: hidden;
+			width: 100%;
+			background-color: #333;
+			padding: 4px 5px 0 5px;
+			margin-bottom: 10px;
+		}
+		.imglistwrap .imgwrap {
+			position: relative;
+			display: inline-block;
+			height: 70px;
+			width: 75px;
+		}
+		.imglistwrap .imglist {
+			width: 1575px;
+			position: relative;
+		}
+
+		.imglistwrap .imglist img {
+			max-height: 70px;
+			margin-right: 5px;
+		}
+		.imglistwrap .imglist img.is-selected {
+			border: 4px solid red;
+		}
+		.sliderwrap {
+			padding-bottom: 40px;
+		}
 		/* slider root element */
 		.smartslider {
-		    background-color: #E63C65;
-		    height: 9px;
-		    position: relative;
-		    border: 1px solid #333;
+		    background-color: #ccc;		    
+		    position: relative;		    
 		    width: 100%;
 		    float: left;
 		    clear: right;
 		    margin-top: 10px;
-		    border-radius:5px;
-		    box-shadow:inset 0 0 8px #000;
 		}
-
+		.smartslider-progress {
+			background-color: #888;			
+			position: absolute;
+			width: 10px;
+		}		
+		.smartslider, .smartslider-progress {
+			border-radius:5px;
+			height: 6px;
+		}
 		/* drag handle */
 		.smartslider a {
 		    background-color: #fff;
-		    height: 28px;
-		    width: 28px;
-		    top: -12px;
+		    height: 16px;
+		    width: 16px;
+		    top: -7px;
 		    position: absolute;
 		    display: block;
 		    margin-top: 1px;
@@ -55,14 +88,42 @@
 </head>
 <body>
 	<div class="slider-container clr">
-		<div class="smartslider" data-min="0" data-max="20" data-value="0" data-step="0" data-init="true">
-			<a href="#"></a>
+		<div class="imglistwrap">
+			<div class="imglist">
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/mdVQcNjaahBOQA1jQ4zUm_g.jpg" class="is-selected"/>
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/mrO_w-5NzvEUnBzATCyfsOA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mIrX42PHTn_wuBgZ9ijuG6g.jpg" />				
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mhfWMzs5X95bU03ZXIH_cLA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mF_Ek0xj0mpFIYayMTnSh9A.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mEnN9cQzbzugdyB57P4u9OQ.jpg" />				
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mtGXNEOd352Rp8sAClALv6A.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m_J79jR8MnCSRtTYakZYvAw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mgqaK0e0EDBpk_6VT2Tlnzw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m09BrwHuJZDhHUS1d12vwsw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/mIrX42PHTn_wuBgZ9ijuG6g.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/my1nxL0KR23m_Nxo44K65Dw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m4rC5aZeR-y_I6yKw5AaN0w.jpg" />
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mDp4a92Zj1HA8K0HVHL9KmA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mnUeBLxfCI1l-9Xbs2fFRXA.jpg" />
+			</div>
+		</div>
+		<div class="sliderwrap">
+			<div class="smartslider" data-min="0" data-max="19" data-value="0" data-step="0" data-init="true">
+				<div class="smartslider-progress"></div>
+				<a href="#"></a>
+			</div>
 		</div>
 	</div>
 	<br/>
 	<div id="react"></div>
 	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="/js/rangeslider/jquery.smartslider.js"></script>
+	<script src="/js/rangeslider/smartslider.js"></script>
 	<script src="/js/react/react.js"></script>
 	<script src="/js/react/react-with-addons.js"></script>
 	<script src="/js/react/JSXTransformer.js"></script>
