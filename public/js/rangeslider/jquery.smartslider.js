@@ -105,116 +105,6 @@
 	}
 	
 	function SmartSlider($elem, conf) {
-		
-		// private variables
-		var self = this,
-			$handle = $elem.find("a"),
-			$progress = $elem.find("smartlider-progress"),
-			vertical,
-			value,			// current value
-			prevValue,      // previous value
-			origo,			// handle's start point
-			len,				// length of the range
-			pos,				// current position of the handle		
-			range,
-			step,
-			precision;
-
-		function triggerChange(val) {
-			$elem.trigger('smartslider.change', val);
-		}
-
-		function triggerSlide(val) {
-			$elem.trigger('smartslider.slide', val);
-		}
-
-		function getPosition($el, pageX, pageY) {
-			var fix = vertical ? $el.height() / 2 : $el.width() / 2,
-				x= vertical ? len-origo-fix + pageY  : pageX -origo -fix;
-			return x;
-		}
-
-		/**
-			The flesh and bone of this tool. All sliding is routed trough this.
-			
-			@param evt types include: click, keydown, blur and api (setValue call)
-			@param isSetValue when called trough setValue() call (keydown, blur, api)
-			@param bChangeEvent boolean flag to trigger a change event			
-			
-			vertical configuration gives additional complexity. 
-		 */
-		function slide(evt, x, val, isSetValue, bChangeEvent) {
-
-			// calculate value based on slide position
-			if (val === undefined) {
-				val = x / len * range;
-				
-			// x is calculated based on val. we need to strip off min during calculation	
-			} else if (isSetValue) {
-				val -= conf.min;
-			}
-			
-			// increment in steps
-			if (step) {
-				val = Math.round(val / step) * step;
-			}
-
-			// count x based on value or tweak x if stepping is done
-			if (x === undefined || step) {
-				x = val * len / range;
-			}
-			
-			// crazy value?
-			if (isNaN(val)) { return self; }
-			
-			// stay within range
-			x = Math.max(0, Math.min(x, len));
-			val = x / len * range;
-
-			if (isSetValue || !vertical) {
-				val += conf.min;
-			}
-			
-			// in vertical ranges value rises upwards
-			if (vertical) {
-				if (isSetValue) {
-					x = len -x;
-				} else {
-					val = conf.max - val;
-				}
-			}
-			
-			// precision
-			val = round(val, precision);
-			
-			// smartslider.slide
-			var isClick = evt.type === "click";
-			if (val !== value && !isClick) {
-				triggerSlide([val, x]);
-			}
-			
-			// speed & callback
-			var speed = isClick ? conf.speed : 0,
-				callback = (isClick || bChangeEvent) && val !== value ? function()  {
-					triggerChange(val);
-				} : null;
-			
-			if (vertical) {
-				$handle.animate({top: x}, speed, callback);
-			} else {
-				$handle.animate({left: x}, speed, callback);
-			}
-			
-			// store current value
-			value = val;
-			pos = x;
-			
-			// se input field's value
-			$elem.data('value', val);
-
-			return self;
-		}
-		
 		// get (HTML5) attributes into configuration
 		$.each("min,max,step,value".split(","), function(i, key) {
 			var val = $elem.data(key);
@@ -223,9 +113,158 @@
 			}
 		});
 		
-		range = conf.max - conf.min;
-		step = conf.step === 'any'?0 : conf.step;
-		precision = conf.precision;
+		// private variables
+		var self = this,
+			$handle = $elem.find("a"),
+			$progress = $elem.find(".smartslider-progress"),
+			vertical,
+			value,			// current value
+			prevValue,      // previous value
+			origo,			// handle's start point
+			len,				// length of the range
+			pos,				// current position of the handle		
+			range = conf.max - conf.min,
+			step = conf.step === 'any'?0 : conf.step,
+			precision = conf.precision,
+			// Functions
+			triggerChange = function(val) {
+				$elem.trigger('smartslider.change', val);
+			},
+			triggerSlide = function(val) {
+				$elem.trigger('smartslider.slide', val);
+			},
+			getPosition = function($el, pageX, pageY) {
+				var fix = vertical ? $el.height() / 2 : $el.width() / 2,
+					x= vertical ? len-origo-fix + pageY  : pageX -origo -fix;
+				return x;
+			},
+			calcDistance = function(val) {
+				var x = val * len / range;
+				return Math.max(0, Math.min(x, len));
+			},
+			updateProgress = function(val) {
+				if(!$progress.length || !val) {
+					// if no progress element or no val return immediately
+					return;
+				}
+				// get the distance
+				var x = calcDistance(val);
+				// update the distance
+				$progress.data('value', val);
+				// update the progress bar
+				if(vertical) {
+					$progress.animate({height: x});
+				} else {
+					$progress.animate({width: x});
+				}
+			},
+			/**
+				The flesh and bone of this tool. All sliding is routed trough this.
+				
+				@param evt types include: click, keydown, blur and api (setValue call)
+				@param isSetValue when called trough setValue() call (keydown, blur, api)
+				@param bChangeEvent boolean flag to trigger a change event			
+				
+				vertical configuration gives additional complexity. 
+			 */
+			slide = function(evt, x, val, isSetValue, bChangeEvent) {
+
+				// calculate value based on slide position
+				if (val === undefined) {
+					val = x / len * range;
+					
+				// x is calculated based on val. we need to strip off min during calculation	
+				} else if (isSetValue) {
+					val -= conf.min;
+				}
+				
+				// increment in steps
+				if (step) {
+					val = Math.round(val / step) * step;
+				}
+
+				// count x based on value or tweak x if stepping is done
+				if (x === undefined || step) {
+					x = calcDistance(val);
+				}
+				
+				// crazy value?
+				if (isNaN(val)) { return self; }
+				
+				// stay within range
+				x = Math.max(0, Math.min(x, len));
+				val = x / len * range;
+
+				if (isSetValue || !vertical) {
+					val += conf.min;
+				}
+				
+				// in vertical ranges value rises upwards
+				if (vertical) {
+					if (isSetValue) {
+						x = len -x;
+					} else {
+						val = conf.max - val;
+					}
+				}
+				
+				// precision
+				val = round(val, precision);
+				
+				// smartslider.slide
+				var isClick = evt.type === "click";
+				if (val !== value && !isClick) {
+					triggerSlide([val, x]);
+				}
+				
+				// speed & callback
+				var speed = isClick ? conf.speed : 0,
+					callback = (isClick || bChangeEvent) && val !== value ? function()  {
+						triggerChange(val);
+					} : null;
+				
+				if (vertical) {
+					$handle.animate({top: x}, speed, callback);
+				} else {
+					$handle.animate({left: x}, speed, callback);
+				}
+				
+				// store current value
+				value = val;
+				pos = x;
+				
+				// se input field's value
+				$elem.data('value', val);
+
+				return self;
+			},
+			attachListeners = function() {
+				// Progress event listener
+				$elem.on('smartslider.progress', function(e, data) {
+					updateProgress(data);
+				});
+			},
+			// calculate all dimension related stuff
+			init = function() {
+				vertical = conf.vertical || dim($elem, "height") > dim($elem, "width");
+			 
+				if (vertical) {
+					len = dim($elem, "height") - dim($handle, "height");
+					origo = $elem.offset().top + len;
+				} else {
+					len = dim($elem, "width") - dim($handle, "width");
+					origo = $elem.offset().left;
+				}
+			},
+			begin = function() {
+				var initValue = $elem.data('value') || conf.value || conf.min;
+				init();
+				self.setValue(initValue);
+				// update progress
+				updateProgress($progress.data('value'));
+				// Attach the event listeners
+				attachListeners();
+			};
 			 
 		if (precision === undefined) {
 			precision = step.toString().split(".");
@@ -275,17 +314,17 @@
 
 		// dragging
 		$handle.draglight({drag: false}).on("dragStart", function() {
+			// preserver the original value
+			prevValue = value;
 			/* do some pre- calculations for seek() function. improves performance */
 			init();
 		}).on("drag", function(e, y, x) {
 			if ($elem.is(":disabled")) { return false; }
 			slide(e, vertical ? y : x);
-		}).on("dragEnd", function(e) {
-			if (!e.isDefaultPrevented()) {
-				e.type = "change";
-				$elem.trigger(e, [value]);
+		}).on("dragEnd", function() {
+			if(value !== prevValue) {
+				triggerChange(value);
 			}
-			
 		}).click(function(e) {
 			return e.preventDefault();
 		});
@@ -297,18 +336,6 @@
 			}
 			init();
 			slide(e, getPosition($handle, e.pageX, e.pageY));
-		});
-
-		// mousedown on handle
-		$handle.on('mousedown', function() {
-			prevValue = value;
-		});
-
-		// mouseup on handle
-		$handle.on('mouseup', function() {
-			if(value !== prevValue) {
-				triggerChange(value);
-			}
 		});
 
 		if (conf.keyboard) {
@@ -336,25 +363,7 @@
 			
 		// HTML5 DOM methods
 		$.extend($elem[0], { stepUp: self.stepUp, stepDown: self.stepDown});
-		
-		
-		// calculate all dimension related stuff
-		function init() {
-			vertical = conf.vertical || dim($elem, "height") > dim($elem, "width");
-		 
-			if (vertical) {
-				len = dim($elem, "height") - dim($handle, "height");
-				origo = $elem.offset().top + len;
-			} else {
-				len = dim($elem, "width") - dim($handle, "width");
-				origo = $elem.offset().left;
-			}
-		}
-		
-		function begin() {
-			init();
-			self.setValue(conf.value !== undefined ? conf.value : conf.min);
-		}
+				
 		begin();
 		
 		// some browsers cannot get dimensions upon initialization

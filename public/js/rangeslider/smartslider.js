@@ -5,11 +5,11 @@ $('.slider-container').on('smartslider.slide', function(e, data) {
 	$($('.imglist img')[data]).addClass('is-selected');
 });
 $('.slider-container').on('smartslider.change', function(e, data) {
-	var leftPos = data * 74;
+	/*var leftPos = data * 74;
 	$('.imglist').css({left: -leftPos});
 	$('.imglist img').removeClass('is-selected');
-	$($('.imglist img')[data]).addClass('is-selected');
-	//console.log("change - " + data);
+	$($('.imglist img')[data]).addClass('is-selected');*/
+	console.log("change - " + data);
 });
 
 $('.sliderwrap').on('mouseover', function() {

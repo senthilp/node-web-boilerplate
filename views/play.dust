@@ -61,14 +61,17 @@
 		    clear: right;
 		    margin-top: 10px;
 		}
-		.smartslider-progress {
+		.smartslider-progress, .smartslider-marker {
 			background-color: #888;			
 			position: absolute;
-			width: 10px;
+			width: 0;
 		}		
 		.smartslider, .smartslider-progress {
 			border-radius:5px;
-			height: 6px;
+			height: 8px;
+		}
+		.smartslider-marker {
+			width: auto;
 		}
 		/* drag handle */
 		.smartslider a {
@@ -79,9 +82,8 @@
 		    position: absolute;
 		    display: block;
 		    margin-top: 1px;
-		    border: 1px solid #000;
+		    border: 2px solid #888;
 		    cursor: pointer;
-		    box-shadow: 0 0 6px #000;
 		    border-radius: 50%;		    
 		}	
 	</style>
@@ -114,7 +116,8 @@
 		</div>
 		<div class="sliderwrap">
 			<div class="smartslider" data-min="0" data-max="19" data-value="0" data-step="0" data-init="true">
-				<div class="smartslider-progress"></div>
+				<div class="smartslider-progress" data-value="10"></div>
+				<div class="smartslider-marker" data-value="16"></div>
 				<a href="#"></a>
 			</div>
 		</div>
