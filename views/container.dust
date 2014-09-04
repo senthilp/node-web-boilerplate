@@ -1,0 +1,57 @@
+<div class="app-container">
+	<div>
+		PAGE - {pageId}
+	</div>
+	<div id="slider-container" class="slider-container clr">
+		<div class="imglistwrap">
+			<div class="imglist">
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/mdVQcNjaahBOQA1jQ4zUm_g.jpg" class="is-selected"/>
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/mrO_w-5NzvEUnBzATCyfsOA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mIrX42PHTn_wuBgZ9ijuG6g.jpg" />				
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mhfWMzs5X95bU03ZXIH_cLA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mF_Ek0xj0mpFIYayMTnSh9A.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mEnN9cQzbzugdyB57P4u9OQ.jpg" />				
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mtGXNEOd352Rp8sAClALv6A.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/m_J79jR8MnCSRtTYakZYvAw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mgqaK0e0EDBpk_6VT2Tlnzw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m09BrwHuJZDhHUS1d12vwsw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs1.ebaystatic.com/d/l225/m/mIrX42PHTn_wuBgZ9ijuG6g.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/my1nxL0KR23m_Nxo44K65Dw.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/m4rC5aZeR-y_I6yKw5AaN0w.jpg" />
+				<img src="http://thumbs3.ebaystatic.com/d/l225/m/m1HKzhMK2WSWKOfuey2IPvg.jpg" />
+				<img src="http://thumbs4.ebaystatic.com/d/l225/m/mDp4a92Zj1HA8K0HVHL9KmA.jpg" />
+				<img src="http://thumbs2.ebaystatic.com/d/l225/m/mnUeBLxfCI1l-9Xbs2fFRXA.jpg" />
+			</div>
+		</div>
+		<div class="sliderwrap">
+			<div class="smartslider" data-min="0" data-max="19" data-value="0" data-step="0" data-init="false">
+				<div class="smartslider-progress" data-value="10"></div>
+				<div class="smartslider-marker" data-value="16"></div>
+				<a href="#"></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav spf-link">
+		<a href="/play?page=1">Link 1</a>
+		<a href="/play?page=2">Link 2</a>
+		<a href="/play?page=3">Link 3</a>
+		<a href="/play?page=4">Link 4</a>
+		<a href="http://www.ebay.com">eBay</a>
+	</div>
+	<noscript class="neo" data-eventing="true" data-container=".app-container" data-delegatetopage="true" data-spf="true"></noscript>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="/js/spf/_event.js"></script>
+	<script src="/js/spf/_event-init.js"></script>
+	<script src="/js/spf/spf.js"></script>
+	<script src="/js/spf/spf-init.js"></script>
+	<script src="/js/rangeslider/jquery.smartslider.js"></script>
+	<script src="/js/rangeslider/smartslider.js"></script>
+	<script>
+		$('.smartslider').smartslider();
+		appInit();
+	</script>	
+</div>

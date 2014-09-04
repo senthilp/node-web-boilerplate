@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dummy</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		body {
+			padding: 20px;
+		}	
+		.nav a {
+			padding-right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">HEADER</div>
+	<br/>
+	<div id="spa-container" class="spa-container">
+		{>"dcontainer"/}	
+	</div>
+	<div id="ph-container"></div>
+	<br/>
+	<div class="footer">FOOTER</div>
+	<script type="text/javascript">
+		spf.init({
+			"url-identifier": null
+		});
+	</script>
+</body>
+</html>

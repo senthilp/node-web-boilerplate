@@ -30,8 +30,8 @@
 			
 		Events: dragStart, drag, dragEnd. 
 	*/
-	var $doc, draggable;
-	
+	var $doc = $(document), draggable;
+
 	$.fn.draglight = function(conf) {
 		
 		// disable IE specialities
@@ -39,7 +39,7 @@
 		
 		conf = $.extend({x: true, y: true, drag: true}, conf);
 	
-		$doc = $doc || $(document).on("mousedown mouseup", function(e) {
+		$doc._on("mousedown mouseup", function(e) {
 				
 			var el = $(e.target);
 			
@@ -51,7 +51,7 @@
 					y0 = e.pageY - offset.top,
 					start = true;
 				
-				$doc.on("mousemove.drag", function(e) {
+				$doc._on("mousemove.drag", function(e) {
 					var x = e.pageX -x0,
 						y = e.pageY -y0,
 						props = {};
@@ -240,7 +240,7 @@
 			},
 			attachListeners = function() {
 				// Progress event listener
-				$elem.on('smartslider.progress', function(e, data) {
+				$elem._on('smartslider.progress', function(e, data) {
 					updateProgress(data);
 				});
 			},
@@ -313,15 +313,15 @@
 		});
 
 		// dragging
-		$handle.draglight({drag: false}).on("dragStart", function() {
+		$handle.draglight({drag: false})._on("dragStart", function() {
 			// preserver the original value
 			prevValue = value;
 			/* do some pre- calculations for seek() function. improves performance */
 			init();
-		}).on("drag", function(e, y, x) {
+		})._on("drag", function(e, y, x) {
 			if ($elem.is(":disabled")) { return false; }
 			slide(e, vertical ? y : x);
-		}).on("dragEnd", function() {
+		})._on("dragEnd", function() {
 			if(value !== prevValue) {
 				triggerChange(value);
 			}
@@ -340,7 +340,7 @@
 
 		if (conf.keyboard) {
 			
-			$doc.on('keydown', function(e) {
+			$doc._on('keydown.smartslider', function(e) {
 					
 				var key = e.keyCode,
 					up = $([75, 76, 38, 33, 39]).index(key) !== -1,
@@ -378,6 +378,9 @@
 		// extend configuration with globals
 		conf = $.extend(true, {}, defaultConf, conf);
 		
+		// unbind all events if already present
+		$(document).off('.smartslider');
+
 		return this.each(function() {
 			new SmartSlider($(this), $.extend(true, {}, conf));
 		});

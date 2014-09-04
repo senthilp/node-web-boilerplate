@@ -1,0 +1,80 @@
+.clr {
+	display: block;
+	clear: both;
+}
+.clr:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	overflow: hidden;
+	height: 0;
+	content: "\0020";
+}
+.slider-container {
+	margin: 20px auto 100px;
+	width: 500px;			
+}		
+
+.imglistwrap {
+	visibility: hidden;
+	overflow: hidden;
+	width: 100%;
+	background-color: #333;
+	padding: 4px 5px 0 5px;
+	margin-bottom: 10px;
+}
+.imglistwrap .imgwrap {
+	position: relative;
+	display: inline-block;
+	height: 70px;
+	width: 75px;
+}
+.imglistwrap .imglist {
+	width: 1575px;
+	position: relative;
+}
+
+.imglistwrap .imglist img {
+	max-height: 70px;
+	margin-right: 5px;
+}
+.imglistwrap .imglist img.is-selected {
+	border: 4px solid red;
+}
+.sliderwrap {
+	padding-bottom: 40px;
+}
+/* slider root element */
+.smartslider {
+    background-color: #ccc;		    
+    position: relative;		    
+    width: 100%;
+    float: left;
+    clear: right;
+    margin-top: 10px;
+}
+.smartslider-progress, .smartslider-marker {
+	background-color: #888;			
+	position: absolute;
+	width: 0;
+}		
+.smartslider, .smartslider-progress {
+	border-radius:5px;
+	height: 8px;
+}
+.smartslider-marker {
+	width: auto;
+}
+/* drag handle */
+.smartslider a {
+    background-color: #fff;
+    height: 16px;
+    width: 16px;
+    top: -7px;
+    position: absolute;
+    display: block;
+    margin-top: 1px;
+    border: 2px solid #888;
+    cursor: pointer;
+    border-radius: 50%;		    
+}	

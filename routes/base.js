@@ -16,4 +16,8 @@ module.exports = function(app) {
 	* Playground
 	*/
 	app.get('/play', require('../controller/play.js'));
+	/**
+	* Dummy
+	*/
+	app.get('/dummy', require('../controller/dummy.js'));	
 };
