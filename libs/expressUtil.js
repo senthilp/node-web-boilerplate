@@ -3,7 +3,7 @@
 
 //util method for expressjs content negotiation.
 module.exports.send = function send(req, res, template, data, fragment){
-	if(req.headers['x-requested-with'] === 'XMLHttpRequest'){
+	if(req.query.neo){
 		res.render(fragment + '.dust', data, function(err, out) {
 			var jsonResp = {};
 			if(fragment ==='container') {
@@ -22,7 +22,7 @@ module.exports.send = function send(req, res, template, data, fragment){
 				json: function(){
 					res.json(jsonResp);
 				}			
-			});		
+			});	
 		});		
 	} else {
 		//Performs content-negotiation on the request Accept header field when present

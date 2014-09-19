@@ -1813,7 +1813,7 @@ spf.nav.response.process = function(url, response, opt_callback, opt_navigate, o
         var extracted = spf.config.get("experimental-extract-unified") ? spf.nav.response.extract_(body) : spf.nav.response.parseScripts_(body);
         var animationClass = (spf.config.get("animation-class"));
         var noAnimation = !spf.nav.response.CAN_ANIMATE_ || !spf.dom.classlist.contains(el, animationClass);
-        spf.dispatch("beforerender", {"id":id});
+        spf.dispatch("spfbeforerender", {"id":id});
         if (noAnimation) {
           if (spf.config.get("experimental-extract-unified")) {
             spf.nav.response.installStyles_((extracted));

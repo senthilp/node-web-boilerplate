@@ -3,7 +3,15 @@
 
     var eventConfig = {
             pageContainer: null,
-            delegateToPage: false
+            delegateToPage: false,
+            reservedNamespace: null
+        },
+        preventScrollTop = false, // Flag to avoid scrolling to top
+        isString = function(value) {
+            if(!value) {
+                return;
+            }
+            return  Object.prototype.toString.call(value) === '[object String]';
         },
         getPageNamespace = function(pageContainer) {
             if (!pageContainer) {
@@ -14,6 +22,30 @@
             // Add the namespace separator .   
             return '.' + namespace;
         },
+        // Checks if the value is present in the list
+        checkDuplicate = function(list, value) {
+            if(!list) {
+                return false;
+            }
+            // Convert to array if string
+            if(isString(list)) {
+                list = [list];
+            }
+            // Convert list to string if needed
+            var i,
+                l,
+                isDuplicate = false,
+                listValue;
+            for(i = 0, l = list.length; i < l; i++) {
+                // Check and add a dot in the beginning
+                listValue = '.' + list[i].replace(/^\./, '');                
+                isDuplicate = new RegExp(listValue + '(\\.|$)').test(value);
+                if(isDuplicate) {
+                    break;
+                }
+            }
+            return isDuplicate;
+        },
         destroyWidget = function(elId) {
             // If require not present return immediately
             if (!require) {
@@ -23,6 +55,16 @@
                 widgetObj = widget && widget.get(elId);
             if (widgetObj) {
                 widgetObj.destroy();
+            }
+        },
+        scrollToHash = function(hash) {
+            // if no hash return immediately
+            if(!hash) {
+                return;
+            }
+            var hashElem = document.getElementById(hash.substr(1));
+            if(hashElem) {
+                hashElem.scrollIntoView(true);
             }
         },
         /**
@@ -107,7 +149,9 @@
                     we need to namespace the events so that the evetns can be switched off
                     on navigation away from the current page.
                 */
-                if(!new RegExp(pageNamespace + '(\\.|$)').test(eventName)) { // First check if namespace if not already present
+                // Duplicate checks
+                if(!checkDuplicate(pageNamespace, eventName) && // First check - namespace is already present in event name
+                    !checkDuplicate(eventConfig.reservedNamespace, eventName)) { // Second check - namespace is already present in reservedNamespace
                     args[0] = eventName + pageNamespace;
                 }
                 originalFn.apply(this, args);
@@ -133,6 +177,10 @@
     */
     $._eventinit = function(config) {
         $.extend(true, eventConfig, config);
+        // If reservedNamespace is string convert to array
+        if(isString(eventConfig.reservedNamespace)) {
+            eventConfig.reservedNamespace = eventConfig.reservedNamespace.replace(/\s/g, '').split(',');
+        }
     };
 
     // Extending the jQuery namespace
@@ -175,6 +223,26 @@
             $document._off(pageNamespace);
         }, false);
 
+        // Handle spfhistory event
+        document.addEventListener('spfhistory', function() {
+            // prevent scroll to top
+            preventScrollTop = true;
+        });
+        
+        // Handle spferror event
+        document.addEventListener('spferror', function() {
+            // reset preventScrollTop
+            preventScrollTop = false;
+        });        
+
+        // Handle spfprocess event
+        document.addEventListener('spfprocess', function() {
+            // Before response processing jump to the top
+            if(!preventScrollTop) {
+                window.scrollTo(0, 0);
+            }
+        });
+
         // Handle spfbeforerender event
         document.addEventListener('spfbeforerender', function(e) {
             var id = e.detail && e.detail.id;
@@ -188,9 +256,16 @@
 
         // Handle spfscriptloaded event
         document.addEventListener('spfdone', function() {
-            // Fire ready and load events
+            // Fire document ready event
             $(document).trigger('ready');
+            // Scroll to hash location
+            if(!preventScrollTop) {
+                scrollToHash(window.location.hash);
+            }
+            // Fire widnow load event
             $(window).trigger('load');
+            // reset preventScrollTop
+            preventScrollTop = false;            
         }, false);
     }
 
