@@ -1,7 +1,7 @@
 (function($){
 	'use strict';
 
-	var DEFAULT_RESERVED_NAMESPACE = 'gh',
+	var DEFAULT_RESERVED_NAMESPACE = 'gh,ghn',
 		$neo = $('noscript.neo');
 
 	if($neo.length && $neo.data('eventing')) {

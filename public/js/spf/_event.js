@@ -9,7 +9,7 @@
         preventScrollTop = false, // Flag to avoid scrolling to top
         isString = function(value) {
             if(!value) {
-                return;
+                return false;
             }
             return  Object.prototype.toString.call(value) === '[object String]';
         },
