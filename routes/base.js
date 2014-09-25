@@ -20,4 +20,11 @@ module.exports = function(app) {
 	* Dummy
 	*/
 	app.get('/dummy', require('../controller/dummy.js'));	
+	/**
+	 * Service Worker
+	 */
+	app.get('/sw', function(req, res) {
+		expressUtil.send(req, res, 'sw', {});
+		
+	});	
 };
