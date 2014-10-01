@@ -8,17 +8,19 @@
 		var reservedNamespaceList = $neo.data('reservedns') || [],
 			reservedNamespace = [],
 			i,
-			l;
+			l,
+			// RegExp "(gh(\.|,|$)|ghn(\.|,|$))"	
+			regex = new RegExp('(' + DEFAULT_RESERVED_NAMESPACE.concat(',')
+															.split(',')
+															.join('(\\.|,|$)|')
+															.slice(0, -1)
+															.concat(')'));
 		if(reservedNamespaceList.length) {
 			reservedNamespaceList = reservedNamespaceList.replace(/\s/g, '').split(',');
 		}
 		for(i = 0, l = reservedNamespaceList.length;i < l; i++) {
-			// Check if the DEFAULT_RESERVED_NAMESPACE is part of the passed namespaces - RegExp "(gh(\.|,|$)|ghn(\.|,|$))"		
-			if(!new RegExp('(' + DEFAULT_RESERVED_NAMESPACE.concat(',')
-															.split(',')
-															.join('(\\.|,|$)|')
-															.slice(0, -1)
-															.concat(')')).test(reservedNamespaceList[i])) {
+			// Check if the DEFAULT_RESERVED_NAMESPACE is part of the passed namespaces	
+			if(!regex.test(reservedNamespaceList[i])) {
 				reservedNamespace.push(reservedNamespaceList[i]);
 			} 
 		}
