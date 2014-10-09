@@ -113,6 +113,7 @@
 	<meta name="twitter:title" content="Senthil Padmanabhan">
 	<meta property="twitter:account_id" content="88984815" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"/>
+	<meta name="apple-mobile-web-app-title" content="Senthil Blog" />
 	<link rel=canonical href="http://www.senthilp.com/"/>
 </head>
 <body>
@@ -140,6 +141,10 @@
 			<div class="center">
 				<h3 id="timeline">Thought Timeline</h3>
 				<ul class="posts">
+					<li class="clr">
+						<span class="title fl"><a href="http://www.ebaytechblog.com/2014/10/02/dont-build-pages-build-modules/">Don’t Build Pages, Build Modules</a></span>
+						<span class="time fr">Oct 02, 2014</span>
+					</li>				
 					<li class="clr">
 						<span class="title fl"><a href="http://www.ebaytechblog.com/2014/03/05/yet-another-responsive-vs-adaptive-story/">Yet Another Responsive vs. Adaptive Story</a></span>
 						<span class="time fr">Mar 5, 2014</span>
