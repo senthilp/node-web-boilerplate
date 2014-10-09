@@ -186,6 +186,27 @@
 		</div>
 	</div>
 	<script>
+		(function() {
+			if(!window.console || !window.performance) {
+				return;
+			}			
+			var resourceStats = function() {
+				var entries = performance.getEntries();
+				if(!entries) {
+					return;
+				}
+				console.log('%c senthilp.com Resource Stats', 'color: red; font-weight: bold; font-size: 20px;');
+				console.log('%c External resource count: %d', 'color: #666; font-weight: bold; font-size: 16px;', entries.length);
+				entries.forEach(function(entry) {
+					console.log('%c %s (%dms)', 'color: #666; font-size: 14px;', entry.name, entry.duration);	
+				});
+			};
+			window.addEventListener('load', function() {
+				requestAnimationFrame(resourceStats);
+			}, false);
+		})();		
+	</script>		
+	<script>		
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -193,7 +214,6 @@
 
 	  ga('create', 'UA-48787922-1', 'senthilp.com');
 	  ga('send', 'pageview');
-
 	</script>
 </body>
 </html>
