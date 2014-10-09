@@ -82,6 +82,10 @@
 		}
 		.icon-fb {
 			background-position: -13px -10px;
+		}		
+		.icon-ss {
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAGo0lEQVR42pVWbUxb5xV+k6ya9ns/u3bp0lTNJnXd1K77X03aj637UDstzdRujcggGQklBAJhCaGlSEuzdMu2qhnNNAgEcIyBQGwgfAT8iTFxsfkyYDsGG0NsbGxjX9vXfnZ87Xt3NVmZ+kjnfrz3fc/zPuc9OvewItjX3d19QHw5ceLEsx0dHb8ZHx//19TUlE2v1++QJXQ6XYje58fGxlrp+7sVFRUHxTWF9fvYkwBgH5kwqbS09GBfX98lu90+u76+zkciESSTSWSzWRCEeyqVQm7c4/FkaJ61t7f3w/Ly8kMyf8UJGxoa9ovPLS0tb5lMpi8iu7uQIYvikMaj0ShmZmbsra2tb4vKJL9FdnCgra3tnNPpjCKPTJaMkCXDEyxHmCkYKBJ7SoWinvw99b+EUuiIqMa7scHnVtrnF9ITk7rslM4ILZlwL2JTghmgJXswpYPeYEpvbwfg9XqhVCoviQoFDjEZbt68edTtdsdA0OmNvFozQiGZxbR5BqbpGUw/2YQ5M5ZZTBJhR6ci4/dvYWNjI0Eh/W2BLK8ud6hms9kOgCZ4eWVPP8U/JiXClwRt0ILRsQkeBKvV6qiurj7CRNy9e/ej3OESMmtOFwbVw0LmfUkyae7i4hKGhkdB4DmOw8DAwJ8ForKysm85HA67mBAu9yMMDGqQSCQgOZAT5t/Fm2woK5HZ7Au4PzoBnuczefLFlfr6+iOsq6urhGIruXKLZBwneRJughVRU0SZnchG7o8jnU4Ly3ybPqhUqjOMqoGSVEjr/quMk5yldzzgrEokLHfo2QuCkPLW9QhuGLegnttGaC8fdolsVCATXOzt7YGqTT8zGo1u+a5cLpdAxhXCmAy4Ebt9HLvNDMEahtDfjyIb8mDSGQW7age7OAt2UourvQ5Ek7wUxmFSlkqlpY1RkXAxuiTFgRzc6z46ULVEFjcrEKpn2Ln8Ch43vIrtUiI03EOjxgd2So/vXzLi6Uotnj47iYePwsjBOjeP8fEHJICHCKose4xSHnJla0t2qIbGkEjxeTLbCLZPMfhPM3jKGJy/ZgjPafHXkQ2wN0bA3p8Ee0uN12rG4PDnC8/q0gL6NffhDXHSmVoslhQzmkwp6cASMfhunMFs+1/AxYIgUNxTCE90YaPpGFbqj8Gr7gSSMawH42i+NYdf1Y3j980PoLf7kANPpp9bwcEaNW5OrCMjV0Zn5pGyKcMjYejFLoUt2vYHcDYNUv5FpMKPkHCZsOeYRDriEzYWSWWx4I9BvRiCwR3GSiAO/WoY19QusAtmlLTMw70dK5xZNndmHpbLEjEb89U0C27ZgPD1N7FzlkL28QuItr6NeG8tYqoqcB3vYEvXi7r+NRz63Ism1QKGOj5BySdTYGetYOcMaBl2IRhLSRri8Ti0Wu091tPTc8rn8wmD8nKR3gsiZuhC+KOXEaqmBDlfMHp+TJuYqDmJGxc+w+zlX2Cs9qdgJaNoaF/GondXUC5LuuzW1hb6+/urWGVl5QtLS0vL4nd5aUgHVhD57HWELj6L0AcvU0a+iGDDi9j+08+w2fgaPBTukbrjOHpeDfaeDn1aF0RkyAd5EdiWl5fdTU1NL7EcBgcHr5LUQnjpO1kOSTqjcDOpuXgIocvP4/HF5xC9wGDracObH9/Hj493g1VpwWrNYO+MoPm2HbFURq6K55IchoaG/iG1Cbm6ZbU+dCAPXlSWXJ5AqJGRssPYaTiErfrDCJ9jmOtX4YefroKdnsYzdSbKPCI8pkFjmxWRAhm54EGw2WzuxsbG7zL5f6a9vf240+kSS70wMfXIQsqewc4fnyeyw9isfQ6BSoYvVEq88ekCWPkkvk5E36yeBPvlXfyzz46UsNH8evo/8tQMnRR55C3B/s7Ozg9lRZlPx4KI/PsMgqcZAo0/gLfue9gsYzB3deNH1+fxFJEdqdPhG2UjYD9X4YFVWCsQ+Skp7ty5c4X8fkXeesh7hK/mCKkHSYqE3Np0JtDwCnwlDKvHyH7H4JnVo+o2hfEnGrB3h8BeV+Ja18MMx+cVOd3utEKhyBF9rVjTIx84cOvWrfce0h+2kDTI+FezUfXfspufVyE4raEBDkubMXygWMT5Vlt2yOLNcny+KMzPzztpfalM0f7/287V1tZ++97AwLXFJYfDHwgiEY+CTyUgR5LPIByLI7ATgHPFsabRDF+/cuXKS0X8PbFRlSZVV5w8Qm1ZuVZv6DGZLatU43apqHJUwCMz5uk1s1HXp1IoKkpOvf8dmY/9xRrU/wASwDZk2NLG/AAAAABJRU5ErkJggg==");	
+			background-position: 3px 4px;		
 		}
 		.main ul.posts {
 			list-style-type: none;
@@ -132,7 +136,7 @@
 						<a rel="me" href="https://twitter.com/senthil_hi" title="Twitter"><i class="icon-tw"></i></a>
 						<a rel="me" href="http://www.linkedin.com/in/senthilpadmanabhan/" title="LinkedIn"><i class="icon-in"></i></a>
 						<a rel="me" href="https://github.com/senthilp" title="GitHub"><i class="icon-gh"></i></a>
-						<a rel="me" href="https://www.facebook.com/senthil.padmanabhan" title="Facebook"><i class="icon-fb"></i></a>
+						<a rel="me" href="http://www.slideshare.net/senthil_hi" title="SlideShare"><i class="icon-ss"></i></a>
 					</div>
 				</div>
 			</div>
