@@ -191,7 +191,7 @@
 				return;
 			}			
 			var resourceStats = function() {
-				var entries = performance.getEntries();
+				var entries = performance.getEntries && performance.getEntries();
 				if(!entries) {
 					return;
 				}
