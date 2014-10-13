@@ -2605,6 +2605,10 @@ spf.nav.isEligible_ = function(url) {
     spf.debug.warn("navigation not initialized");
     return false;
   }
+  var validator = spf.config.get("validator");
+  if (validator && !validator(url)) {
+    return false;
+  }
   var count = parseInt(spf.state.get(spf.state.Key.NAV_COUNTER), 10) || 0;
   count++;
   var limit = parseInt(spf.config.get("navigate-limit"), 10);
