@@ -1,4 +1,4 @@
-(function($, require) {
+(function($, require, raptor) {
     'use strict';
 
     var eventConfig = {
@@ -6,7 +6,7 @@
             delegateToPage: false,
             reservedNamespace: null
         },
-        preventScrollTop = false, // Flag to avoid scrolling to top
+        preventScrollTop = false, // Flag to avoid scrolling to top        
         isString = function(value) {
             if(!value) {
                 return false;
@@ -66,6 +66,18 @@
             if(hashElem) {
                 hashElem.scrollIntoView(true);
             }
+        },
+        profile = function(timing) {
+            if(!timing || !raptor) {
+                return;
+            }
+            var profiler = raptor.find('ebay.profiler.Profiler'),
+                startTime = timing.startTime,
+                endTime = timing.spfProcessFoot || timing.spfProcessBody || timing.responseEnd;
+                     
+            if (profiler && typeof oGaugeInfo !== "undefined"){
+                profiler.addParam("i_30i", endTime - startTime);
+            }            
         },
         /**
          * Sets data in the cache if the both the specified lifetime and the
@@ -255,7 +267,7 @@
         }, false);
 
         // Handle spfscriptloaded event
-        document.addEventListener('spfdone', function() {
+        document.addEventListener('spfdone', function(evt) {
             // Fire document ready event
             $(document).trigger('ready');
             // Scroll to hash location
@@ -265,8 +277,10 @@
             // Fire widnow load event
             $(window).trigger('load');
             // reset preventScrollTop
-            preventScrollTop = false;            
+            preventScrollTop = false;
+            // Do profiling
+            profile(evt.detail.response.timing);
         }, false);
     }
 
-})(window.jQuery, window.require);
+})(window.jQuery, window.require, window.raptor);
