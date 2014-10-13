@@ -45,7 +45,7 @@
 		$('.slider-container')._on('click', function() {
 			//alert('direct');
 		});	
-		$(document).on('click.gh', function() {
+		$(document).on('click', function() {
 			alert('doc click');
 			/*window.arr = [];
 			var test = [];
