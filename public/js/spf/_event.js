@@ -6,7 +6,15 @@
             delegateToPage: false,
             reservedNamespace: null
         },
-        preventScrollTop = false, // Flag to avoid scrolling to top        
+        preventScrollTop = false, // Flag to avoid scrolling to top      
+        performance =  window.performance,
+        clearResourceTimings = (performance && (performance.clearResourceTimings ||
+            performance.webkitClearResourceTimings ||
+            performance.mozClearResourceTimings ||
+            performance.msClearResourceTimings ||
+            performance.oClearResourceTimings)) ||
+            function noop() {},
+
         isString = function(value) {
             if(!value) {
                 return false;
@@ -77,7 +85,8 @@
                      
             if (profiler && typeof oGaugeInfo !== "undefined"){
                 profiler.addParam("i_30i", endTime - startTime);
-            }            
+            } 
+            clearResourceTimings.call(window.performance);        
         },
         /**
          * Sets data in the cache if the both the specified lifetime and the
