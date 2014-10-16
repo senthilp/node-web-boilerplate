@@ -2,8 +2,7 @@
 	'use strict';
 
 	var $neo = $('noscript.neo'),
-		$progressBar = $('.spf-progress'),
-		animationDuration;
+		$progressBar = $('.spf-progress');
 
 	if(!$neo.length || !$neo.data('spf')) {
 		// return since SPF not enabled
@@ -17,20 +16,28 @@
 
 	$progressBar = $('<div class="spf-progress"></div>').appendTo('body');
 
-	animationDuration = ($neo.data('mediantime') || 1000)/1000; // Default 1000ms
+	var animationDuration = (($neo.data('mediantime') || 1000)/1000) + 's', // Default 1000ms
+		getAnimationDurationStyle = function(duration){
+			return {
+				"-webkit-animation-duration": duration,
+				"-moz-animation-duration": duration,
+				"-o-animation-duration": duration,
+				"animation-duration": duration
+			};
+		};
 
 
 	// Start animation
 	document.addEventListener('spfrequest', function() {
 		// Add the animationDuration
-		$progressBar.css('animation-duration', animationDuration + 's');
+		$progressBar.css(getAnimationDurationStyle(animationDuration));
 		$progressBar.addClass('spf-progress-animate');		
 	});
 
 	// Complete animation
 	document.addEventListener('spfdone', function() {
 		$progressBar.width($progressBar.width()) // Set width to preserve it
-					.css('animation-duration', '') // Reset animation-duration
+					.css(getAnimationDurationStyle('')) // Reset animation-duration
 					.removeClass('spf-progress-animate')
 					.addClass('spf-progress-animate-final');
 	});
