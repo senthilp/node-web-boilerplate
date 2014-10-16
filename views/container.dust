@@ -48,13 +48,14 @@
 		<a href="/play?page=4#app-container">Link 4</a>
 		<a href="http://www.ebay.com">eBay</a>
 	</div>
-	<noscript class="neo" data-eventing="true" data-container=".app-container" data-delegatetopage="true" data-spf="true" data-reservedns="gf" data-version="1"></noscript>
+	<noscript class="neo" data-eventing="true" data-container=".app-container" data-delegatetopage="true" data-spf="true" data-reservedns="gf" data-version="1" data-mediantime="1000"></noscript>
 	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="/js/spf/_event.js"></script>
 	<script src="/js/spf/_event-init.js"></script>
 	<script src="/js/dispatcher/jquery.dispatcher.js"></script>
 	<script src="/js/spf/spf.js"></script>
 	<script src="/js/spf/spf-init.js"></script>
+	<script src="/js/spf/spf-progress.js"></script>
 	<script src="/js/rangeslider/jquery.smartslider.js"></script>
 	<script src="/js/rangeslider/smartslider.js"></script>
 	<script>

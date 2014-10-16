@@ -3,6 +3,11 @@
 
 //util method for expressjs content negotiation.
 module.exports.send = function send(req, res, template, data, fragment){
+	var now = Date.now(),
+		future = now + 1000;
+	while(now <= future) {
+		now = Date.now();
+	}
 	if(req.query.neo){
 		res.render(fragment + '.dust', data, function(err, out) {
 			var jsonResp = {};

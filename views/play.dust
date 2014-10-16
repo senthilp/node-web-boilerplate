@@ -3,6 +3,7 @@
 <head>
 	<title>playground</title>
 	<link href="/css/play.css" rel="stylesheet">
+	<link rel="stylesheet" href="/js/spf/spf-progress.css">
 	<style>
 		body {
 			padding: 20px;
