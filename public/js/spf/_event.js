@@ -75,6 +75,14 @@
                 hashElem.scrollIntoView(true);
             }
         },
+        resetHeight = function(body) {
+            if(!body) {
+                return;
+            }
+            for(var elem in body) {
+                $('#' + elem).css('height', '');
+            }
+        },
         profile = function(timing) {
             if(!timing || !raptor) {
                 return;
@@ -266,17 +274,27 @@
 
         // Handle spfbeforerender event
         document.addEventListener('spfbeforerender', function(e) {
-            var id = e.detail && e.detail.id;
+            var id = e.detail && e.detail.id,
+                $elem,
+                height;
             if (id) {
+                $elem = $('#' + id);
+                height = $elem.height();
                 // Destory the widget
                 destroyWidget(id);
+                // set height if height greater that window height
+                if(height > window.innerHeight) {
+                    $elem.height(height);
+                }
                 // Empty the content so jQuery events get destroyed
-                $('#' + id).empty();
+                $elem.empty();
             }
         }, false);
 
-        // Handle spfscriptloaded event
+        // Handle spfdone event
         document.addEventListener('spfdone', function(evt) {
+            // Reset height
+            resetHeight(evt.detail.response.body);
             // Fire document ready event
             $(document).trigger('ready');
             // Scroll to hash location
