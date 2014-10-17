@@ -20,10 +20,10 @@
 }
 
 .spf-progress-animate-final {
-	-webkit-animation: spf-progress-move-final 0.1s;
-    -moz-animation: spf-progress-move-final 0.1s;
-    -o-animation: spf-progress-move-final 0.1s;
-    animation: spf-progress-move-final 0.1s;
+	-webkit-animation: spf-progress-move-final 0.2s;
+    -moz-animation: spf-progress-move-final 0.2s;
+    -o-animation: spf-progress-move-final 0.2s;
+    animation: spf-progress-move-final 0.2s;
 	-webkit-animation-fill-mode: forwards;
 	-moz-animation-fill-mode: forwards;
 	-o-animation-fill-mode: forwards;
