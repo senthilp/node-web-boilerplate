@@ -4,7 +4,7 @@
 	var $neo = $('noscript.neo'),
 		versionParam;
 
-	if($neo.length && $neo.data('spf')) {
+	if($neo.length && $neo.data('spf') && spf) {
 		versionParam = $neo.data('version');
 		// Wrapping it as a paramater
 		versionParam = versionParam? '&v=' + versionParam:''; 		
