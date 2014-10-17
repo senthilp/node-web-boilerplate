@@ -1,22 +1,10 @@
-(function($){
+(function($, spf){
 	'use strict';
 
-	var $neo = $('noscript.neo'),
-		$progressBar = $('.spf-progress');
+	spf = spf || {};
 
-	if(!$neo.length || !$neo.data('spf')) {
-		// return since SPF not enabled
-		return;
-	}
-
-	if($progressBar.length) {
-		// return since already present and events attached
-		return;
-	}
-
-	$progressBar = $('<div class="spf-progress"></div>').appendTo('body');
-
-	var animationDuration = (($neo.data('mediantime') || 1000)/1000) + 's', // Default 1000ms
+	var $progressBar = $('.spf-progress'),
+		animationDuration = '1s', // Default 1s
 		getAnimationDurationStyle = function(duration){
 			return {
 				"-webkit-animation-duration": duration,
@@ -24,32 +12,46 @@
 				"-o-animation-duration": duration,
 				"animation-duration": duration
 			};
+		},		
+		startAnim = function() {
+			// Add the animationDuration
+			$progressBar.css(getAnimationDurationStyle(animationDuration));
+			$progressBar.addClass('spf-progress-animate');	
+		},
+		completeAnim = function() {
+			$progressBar.width($progressBar.width()) // Set width to preserve it
+						.css(getAnimationDurationStyle('')) // Reset animation-duration
+						.removeClass('spf-progress-animate')
+						.addClass('spf-progress-animate-final');
+		},
+		resetAnim = function() {
+			if($progressBar.hasClass('spf-progress-animate-final')) {
+				// remove the animation class
+				$progressBar.removeClass('spf-progress-animate-final');				
+				// reset width to 0
+				$progressBar.width(0);			
+			}
+		}, 
+		init = function(duration) {
+			// Set the duration
+			if(duration) {
+				animationDuration = (duration / 1000) + 's';
+			}			
+			// Check the progressBar element
+			if(!$progressBar.length) {
+				$progressBar = $('<div class="spf-progress"></div>').appendTo('body');
+				// Attach the animation end event to reset animation
+				$progressBar.on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", resetAnim);								
+			}
 		};
 
-
 	// Start animation
-	document.addEventListener('spfrequest', function() {
-		// Add the animationDuration
-		$progressBar.css(getAnimationDurationStyle(animationDuration));
-		$progressBar.addClass('spf-progress-animate');		
-	});
+	document.addEventListener('spfrequest', startAnim);
 
 	// Complete animation
-	document.addEventListener('spfdone', function() {
-		$progressBar.width($progressBar.width()) // Set width to preserve it
-					.css(getAnimationDurationStyle('')) // Reset animation-duration
-					.removeClass('spf-progress-animate')
-					.addClass('spf-progress-animate-final');
-	});
+	document.addEventListener('spfdone', completeAnim);	
 
-	// Reset animation
-	$progressBar.on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){ 
-		if($progressBar.hasClass('spf-progress-animate-final')) {
-			// reset width to 0
-			$progressBar.width(0);			
-			// remove the animation class
-			$progressBar.removeClass('spf-progress-animate-final');
-		}
-	});
+	// Assign init to spf
+	spf.progressInit = init;
 
-})(window.jQuery);
+})(window.jQuery, window.spf);
