@@ -301,12 +301,12 @@
             if(!preventScrollTop) {
                 scrollToHash(window.location.hash);
             }
+            // Do profiling
+            profile(evt.detail.response.timing);            
             // Fire widnow load event
             $(window).trigger('load');
             // reset preventScrollTop
             preventScrollTop = false;
-            // Do profiling
-            profile(evt.detail.response.timing);
         }, false);
     }
 
