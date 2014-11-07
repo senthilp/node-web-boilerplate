@@ -1,120 +1,14 @@
 .spf-progress {
 	position: fixed;
 	top: 0;
-	left: 0;
-	z-index: 100001;	
-	height: 1.75px;
-	background-color: #0058d4;
-	box-shadow: 1px 0.5px 0.2px rgb(0, 99, 209);	
-}
-
-.spf-progress-animate {
-	-webkit-animation: spf-progress-move 0.3s;
-    -moz-animation: spf-progress-move 0.3s;
-    -o-animation: spf-progress-move 0.3s;
-    animation: spf-progress-move 0.3s;   
-	-webkit-animation-fill-mode: forwards;
-	-moz-animation-fill-mode: forwards;
-	-o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
-.spf-progress-animate-final {
-	-webkit-animation: spf-progress-move-final 0.2s;
-    -moz-animation: spf-progress-move-final 0.2s;
-    -o-animation: spf-progress-move-final 0.2s;
-    animation: spf-progress-move-final 0.2s;
-	-webkit-animation-fill-mode: forwards;
-	-moz-animation-fill-mode: forwards;
-	-o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes spf-progress-move {
-  	0%{
-  		width: 0%; 
-  	}
-  	10% {
-    	width: 10%; 
-  	}
-  	25% {
-  		width: 25%; 	
-  	}
-  	50% {
-  		width: 50%; 	
-  	}
-  	100% {
-  		width: 80%; 	
-  	}
-}
-@-moz-keyframes spf-progress-move {
-  	0%{
-  		width: 0%; 
-  	}
-  	10% {
-    	width: 10%; 
-  	}
-  	25% {
-  		width: 25%; 	
-  	}
-  	50% {
-  		width: 50%; 	
-  	}
-  	100% {
-  		width: 80%; 	
-  	}
-}
-@-o-keyframes spf-progress-move {
-  	0%{
-  		width: 0%; 
-  	}
-  	10% {
-    	width: 10%; 
-  	}
-  	25% {
-  		width: 25%; 	
-  	}
-  	50% {
-  		width: 50%; 	
-  	}
-  	100% {
-  		width: 80%; 	
-  	}
-}
-@keyframes spf-progress-move {
-  	0%{
-  		width: 0%; 
-  	}
-  	10% {
-    	width: 10%; 
-  	}
-  	25% {
-  		width: 25%; 	
-  	}
-  	50% {
-  		width: 50%; 	
-  	}
-  	100% {
-  		width: 80%; 	
-  	}
-}
-@-webkit-keyframes spf-progress-move-final {
-	to { 
-		width:100%; 
-	}
-}
-@-moz-keyframes spf-progress-move-final {
-	to { 
-		width:100%; 
-	}
-}
-@-o-keyframes spf-progress-move-final {
-	to { 
-		width:100%; 
-	}
-}
-@keyframes spf-progress-move-final {
-	to { 
-		width:100%; 
-	}
+	left: -6px;
+	z-index: 170100030;	
+	height: 2.2px;
+  width: 0%;
+	background-color: #0163d1;
+  border-radius: 1px;
+  -webkit-transition: width 500ms ease-out;
+  -moz-transition: width 500ms ease-out;
+  -o-transition: width 500ms ease-out;
+  transition: width 500ms ease-out;
 }
