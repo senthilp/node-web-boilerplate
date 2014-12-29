@@ -146,6 +146,10 @@
 				<h3 id="timeline">Thought Timeline</h3>
 				<ul class="posts">
 					<li class="clr">
+						<span class="title fl"><a href="http://calendar.perfplanet.com/2014/the-power-of-perceived-performance/">The Power of Perceived Performance</a></span>
+						<span class="time fr">Dec 27, 2014</span>
+					</li>				
+					<li class="clr">
 						<span class="title fl"><a href="http://www.ebaytechblog.com/2014/10/02/dont-build-pages-build-modules/">Don’t Build Pages, Build Modules</a></span>
 						<span class="time fr">Oct 2, 2014</span>
 					</li>				
