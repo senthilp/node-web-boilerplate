@@ -9,7 +9,7 @@
 	"url": "git://github.com/stevenluan/node-web-boilerplate.git"
     },
     "dependencies": {
-        "express":"",
+        "express":"3.2.4",
         "underscore":"",
         "path":"",
         "consolidate":"",
