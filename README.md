@@ -1,4 +1,4 @@
-It is a boilerplate for node + expressjs + cluster2 + dustjs + mocha.
+It is a boilerplate for node + expressjs + dustjs + mocha.
 
 Quick Start
 -----
